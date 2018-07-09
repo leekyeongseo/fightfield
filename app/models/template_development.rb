@@ -1,0 +1,2 @@
+class TemplateDevelopment < ApplicationRecord
+end
