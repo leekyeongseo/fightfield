@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Writer</th>
       <th>Title</th>
       <th>Desc</th>
       <th colspan="3"></th>
@@ -14,6 +15,7 @@
   <tbody>
     <% @templates.each do |template| %>
       <tr>
+        <td><%= template.id%></td>
         <td><%= template.title %></td>
         <td><%= template.desc %></td>
         <td><%= link_to 'Show', template %></td>
