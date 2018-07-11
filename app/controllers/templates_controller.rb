@@ -27,6 +27,8 @@ class TemplatesController < ApplicationController
     @template = Template.new(template_params)
     @template.user_id = current_user.id
     
+    
+    
     respond_to do |format|
       if @template.save
         format.html { redirect_to @template, notice: 'Template was successfully created.' }

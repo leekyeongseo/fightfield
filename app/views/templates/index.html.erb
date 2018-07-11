@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+
+
 <h1>Templates</h1>
 
 <table>
@@ -15,7 +17,8 @@
   <tbody>
     <% @templates.each do |template| %>
       <tr>
-        <td><%= template.id%></td>
+      
+        <td><%= template.user_id%></td>
         <td><%= template.title %></td>
         <td><%= template.desc %></td>
         <td><%= link_to 'Show', template %></td>
@@ -29,3 +32,27 @@
 <br>
 
 <%= link_to 'New Template', new_template_path %>
+
+
+<div class="page-header">
+  <h1>Share Dialog</h1>
+</div>
+
+<p>Click the button below to trigger a Share Dialog</p>
+
+<a id="shareBtn" class="btn btn-success clearfix">Share</a>
+
+<p style="margin-top: 50px">
+  <hr />
+  <div class="btn btn-small"  href="https://developers.facebook.com/docs/sharing/reference/share-dialog">Share Dialog Documentation</div>
+</p>
+
+<script>
+document.getElementById('shareBtn').onclick = function() {
+  FB.ui({
+    method: 'share',
+    display: 'popup',
+    href: 'https://developers.facebook.com/docs/',
+  }, function(response){});
+}
+</script>
