@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/fight/stat_board', to: 'fights#stat_board'
   get '/fight/ongoing', to: 'fights#ongoing'
   get '/fight/setting', to: 'fights#setting'
+  get 'fight/leader_board', to: 'fight#leader_board'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

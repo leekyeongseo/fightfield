@@ -11,4 +11,7 @@ class FightsController < ApplicationController
     def setting
         render 'setting'
     end
+    def leader_board
+        render 'leader_board'
+    end
 end
