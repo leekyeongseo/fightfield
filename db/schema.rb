@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180709150435) do
+ActiveRecord::Schema.define(version: 20180720161804) do
+
+  create_table "fights", force: :cascade do |t|
+    t.integer "applicant_id", null: false
+    t.integer "respondent_id", null: false
+    t.integer "standard", default: 0, null: false
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["applicant_id"], name: "index_fights_on_applicant_id"
+    t.index ["respondent_id"], name: "index_fights_on_respondent_id"
+  end
 
   create_table "template_developments", force: :cascade do |t|
     t.datetime "created_at", null: false

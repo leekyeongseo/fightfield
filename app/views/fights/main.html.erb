@@ -1,4 +1,8 @@
+
+
+
 <h1> 결투장 </h1>
+
 
 To. ㅡㅡㅡ(Ex)ㅈ밥)
 초대장
@@ -9,18 +13,78 @@ To. ㅡㅡㅡ(Ex)ㅈ밥)
 ㄴ
 From. ㅡㅡㅡ(Ex)너의 천적)
 공유하기
+<br><br>
 
+ <form action='/applying_action' method='POST'>
+    <input type="text" name="email">  에게 <button>결투신청</button>
+    <br>결투내용 : <input type="text" name="content">
+</form>
+
+<br>
+
+<% if user_signed_in? %>
+    <h3>내가 한 결투 신청</h3>
+    <% @fight.each do |f|%>
+        <%if f.applicant == current_user%>
+            
+            [<%= f.respondent.email %>] 님에게 결투를 신청하셨습니다.
+            결투내용 : <%=f.content%>
+            
+            <%if f.standard == 0 %>
+             [수락대기중]<br>
+            <%elsif f.standard ==2 %>
+             [거절됨]<br>
+            <%else%>
+             [수락 완료]<br>
+            <%end%>
+             
+        <%end%>
+        
+    <%end%>
+
+    <h3>나에게 온 결투 신청</h3>
+    <% @fight.each do |f|%>
+        <%if f.respondent == current_user%>
+            [<%= f.applicant.email%>] 님께서 
+            <%if f.standard == 1 %>
+               신청하신 결투를 수락하셨습니다.
+                결투내용 : <%=f.content%>
+
+            <%elsif f.standard ==2 %>
+                신청하신 결투를 거절하였습니다.
+                결투내용 : <%=f.content%>
+
+            <%else%>
+                결투를 신청하셨습니다.
+                결투내용 : <%=f.content%>
+                <a href='/accept_fight/<%=f.id%>'>결투수락</a>
+                <a href='/reject_fight/<%=f.id%>'>결투거절</a>
+                
+            <%end%>
+            <br>
+
+        <%end%>
+       
+    <%end%>
+
+
+
+<%end%>
+
+<br>
 <div>
-    <a href="/fight/stat_board", method='GET'> stat_board </a>
+    <a href="/stat_board", method='GET'> stat_board </a>
 </div>
 <div>
-    <a href="/fight/ongoing", method='GET'> ongoing </a>
+    <a href="/ongoing", method='GET'> ongoing </a>
 </div>
 <div>
-    <a href="/fight/setting", method='GET'> setting </a>
+    <a href="/setting", method='GET'> setting </a>
 </div>
 <div>
-    <a href="/fight/leader_board", method='GET'> leader_board </a>
+    <a href="/leader_board", method='GET'> leader_board </a>
 </div>
+
+
 
 

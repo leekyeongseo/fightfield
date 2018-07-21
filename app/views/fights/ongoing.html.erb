@@ -1,1 +1,11 @@
 <h1> 현재 진행 중인 전투 </h1>
+<% @fight.each do |f|%>
+    <%if f.standard ==1 %>
+        <%if f.applicant == current_user || f.respondent == current_user%>
+        [<%=f.applicant.email%>] 님이 [<%=f.respondent.email%>] 님에게 신청한 결투 --> <%=f.content%>
+     
+        <br>
+        <%end%>
+    <%end%>
+
+<%end%>

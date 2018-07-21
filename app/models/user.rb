@@ -2,6 +2,12 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :templates
+
+  has_many :applying_action, class_name: "Fight", foreign_key: :applicant_id
+  has_many :responding_action, class_name: "Fight", foreign_key: :respondent_id
+  has_many :applicants, through: :applying_action, source: :respondent
+  has_many :respondents, through: :responding_action, source: :applicant
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, :omniauth_providers => [:facebook]

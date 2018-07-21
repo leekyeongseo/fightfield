@@ -1,16 +1,23 @@
 Rails.application.routes.draw do
   #devise_for :users
-  resources :templates
+  #resources :templates
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-  root 'templates#index'
+  #root 'templates#index'
+  root 'fights#main'
+  
 
-  get '/', to: 'feeds#index'
+  #get '/', to: 'feeds#index'
+  
+ 
+  get '', to: 'fights#main'
+  get '/stat_board', to: 'fights#stat_board'
+  get '/ongoing', to: 'fights#ongoing'
+  get '/setting', to: 'fights#setting'
+  get '/leader_board', to: 'fights#leader_board'
+  post '/applying_action', to: 'fights#fight'
+  get '/accept_fight/:id', to: 'fights#accept_fight'
+  get '/reject_fight/:id', to: 'fights#reject_fight'
 
-  get '/fight', to: 'fights#main'
-  get '/fight/stat_board', to: 'fights#stat_board'
-  get '/fight/ongoing', to: 'fights#ongoing'
-  get '/fight/setting', to: 'fights#setting'
-  get 'fight/leader_board', to: 'fight#leader_board'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
