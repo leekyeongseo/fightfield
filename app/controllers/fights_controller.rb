@@ -29,9 +29,13 @@ class FightsController < ApplicationController
 
     def fight 
        
-        
-        id = User.find_by_email(params[:email]).id
-        fight_hash = {applicant_id: current_user.id, respondent_id: id, content: params[:content]}
+        if User.find_by_email(params[:email])
+            id = User.find_by_email(params[:email]).id
+            fight_hash = {applicant_id: current_user.id, respondent_id: id, content: params[:content]}
+
+        else
+            fight_hash = {applicant_id: current_user.id, respondent_id: current_user.id, content: params[:content], temp_user: params[:email], respondent_exist: false}
+        end
         fight = Fight.create(fight_hash)
         fight.save
         #fight = Fight.where(fight_hash)
@@ -51,7 +55,13 @@ class FightsController < ApplicationController
     end
 
     def accept_fight
+    
         fight = Fight.find(params[:id])
+        if fight.respondent_exist == false
+            fight.respondent_exist = true
+            fight.respondent = current_user
+            fight.save
+        end
         fight.standard = 1
         fight.save
         redirect_to action: 'main'
@@ -59,6 +69,11 @@ class FightsController < ApplicationController
 
     def reject_fight
         fight = Fight.find(params[:id])
+        if fight.respondent_exist == false
+            fight.respondent_exist == true
+            fight.respondent == fight.temp_user
+            fight.save
+        end
         fight.standard = 2
         fight.save
         redirect_to action: 'main'
