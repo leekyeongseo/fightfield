@@ -3,6 +3,8 @@
 <h1> 결투장 </h1>
 
 
+
+
 To. ㅡㅡㅡ(Ex)ㅈ밥)
 초대장
 나는 ㅡㅡㅡ에게 ㅡㅡㅡ결투를 신청한다. 이를 받아들일 시 패자는 ㅡㅡㅡ를 할 것을 제안한다.
@@ -123,4 +125,28 @@ From. ㅡㅡㅡ(Ex)너의 천적)
 
 
 
+<div class="page-header">
+  <h1>Share Dialog</h1>
+</div>
 
+<p>Click the button below to trigger a Share Dialog</p>
+
+<a id="shareBtn" class="btn btn-success clearfix">Share</a>
+
+<p style="margin-top: 50px">
+  <hr />
+  <div class="btn btn-small"  href="https://developers.facebook.com/docs/sharing/reference/share-dialog">Share Dialog Documentation</div>
+</p>
+
+<script>
+document.getElementById('shareBtn').onclick = function() {
+    
+  FB.ui({
+    method: 'share',
+    display: 'popup',
+    hashtag:'#결투장',
+    quote:"sdfds",
+    href: 'https://developers.facebook.com/docs/',
+  }, function(response){});
+}
+</script>
