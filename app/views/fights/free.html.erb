@@ -1,28 +1,55 @@
-자유대결
+<!-- Uses a transparent header that draws on top of the layout's background -->
+<div class="demo-layout-transparent mdl-layout mdl-js-layout">
+  <main class="mdl-layout__content">
+    <div class="text">
+    <!-- Wide card with share menu button -->
+        <style>
+        .demo-card-wide.mdl-card {
+        width: 700px;
+        height: 450px;
+        opacity: 0.8;
+        font-weight: bold;
+        color: black;
+        font-family: 'Press Start 2P', cursive;
+        border: 7px solid red;
+        }
+        .demo-card-wide > .mdl-card__title {
+        color: #fff;
+        height: 1000px;
+        background: url('../assets/demos/welcome_card.jpg') center / cover;
+        }
+        .demo-card-wide > .mdl-card__menu {
+        color: #fff;
+        }
+        </style>
 
-<div style='border: 1px solid black;'>
-  <h1> 초대장 </h1>
-  To. <%= @feed.to %>
-  <br>
-  너에게 자유대결을 신청한다.
-  승리조건은 다음과 같다.
-  <%= @feed.content %>
-  <br>
-  From. <%= @feed.from %>
+        <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__supporting-text">
+            <form action='/start_fight' method='POST' class ="border">
+                <h1 class="invitation_title">INVITATION</h1>
+                <span class="hangul" style="color:black;">To. <%= @feed.to%></span>
+                <br>
+                <div class="hangul" style='margin-top: 20px;'>
+                    <span style="color:black;">너에게</span>
+                    
+                   <span style="color:black;"> 자유대결을 신청한다.<br><br>
+                    승리조건은 다음과 같다.</span>
+                </div>
+                <div class="hangul" style="margin-bottom: 10px; margin-top: 10px; color:black; border: 1px black solid; width: 300px; height: 100px; margin-left:25%; margin-right: 25%;"> <%=@feed.content%></div> <br>
+               <span class="hangul" style="color:black;"> From. <%=@feed.from%> </span>
+                <br>
+                <!-- Colored raised button --><br><br>
+                <a id="shareBtn" class="btn btn-success clearfix">Share</a>
+
+            </form>
+        </div>
+        </div>
+        
+    </div>
+  </main>
 </div>
 
-<div class="page-header">
-  <h1>Share Dialog</h1>
-</div>
 
-<p>Click the button below to trigger a Share Dialog</p>
-
-<a id="shareBtn" class="btn btn-success clearfix">Share</a>
-
-<p style="margin-top: 50px">
-  <hr />
-  <div class="btn btn-small"  href="https://developers.facebook.com/docs/sharing/reference/share-dialog">Share Dialog Documentation</div>
-</p>
 
 <script>
 document.getElementById('shareBtn').onclick = function() {
@@ -37,24 +64,15 @@ document.getElementById('shareBtn').onclick = function() {
             'og:url': 'https://161d737c.ngrok.io/stat_board',
             'og:title': '제목내맘대루',
             'og:description': '아싸된당',
-            'og:image': 'https://s-i.huffpost.com/gen/5024106/thumbs/o-PUPPIES-570.jpg?1'
+            'og:image': 'http://cfile28.uf.tistory.com/image/271768505693D03A183C99'
             }
         })
         }, function(response) {
         // Action after response
         });
 
-  //FB.ui({
-    //method: 'share',
-    //display: 'popup',
-    //hashtag:'#결투장',
-    //quote:"s히히",
-    //href: 'https://161d737c.ngrok.io',
-    //description: "메롱",
-   
-    
-  //}, function(response){
-      
-  //});
+ 
 }
 </script>
+
+
