@@ -84,9 +84,16 @@ class FightsController < ApplicationController
         fight.to = params[:to]
         fight.content = params[:context]
         fight.from = params[:from]
+        fight.type = params[:city_id].to_i
         fight.save
+        @id =fight.id
+        @to = fight.to
+        @from = fight.from
+        @content = fight.content
+        @type = fight.type
+        
         type = params[:city_id].to_i
-        if type == 1
+        if type == 1    
             render 'hakjum'
         elsif type == 2
             render 'diet'
@@ -97,8 +104,11 @@ class FightsController < ApplicationController
         elsif type == 5
             render 'free'
         end
+
         
         
     end
-    
+
+   
+
 end

@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   get '/accept_fight/:id', to: 'fights#accept_fight'
   get '/reject_fight/:id', to: 'fights#reject_fight'
   post '/start_fight', to: 'fights#start_fight'
+  
+  
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
