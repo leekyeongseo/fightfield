@@ -4,6 +4,16 @@
     <a href="/", method='GET'>to_home </a>
 </div>
 <br>
+<div>
+  <h1> 초대장 </h1>
+  To. <%= @feed.to %>
+  <br>
+  너에게 학점대결을 신청한다.
+  승리조건은 다음과 같다.
+  <%= @feed.content %>
+  <br>
+  From. <%= @feed.from %>
+
 <%= @feed.id %>
 
 
