@@ -1,5 +1,5 @@
 class FightsController < ApplicationController
-    before_action :authenticate_user!, except: [:main]
+   
     def main
         @fight = Fight.all
         if user_signed_in?
