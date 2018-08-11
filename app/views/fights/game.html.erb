@@ -27,7 +27,7 @@
         <div class="mdl-card__supporting-text">
             <form action='/start_fight' method='POST' class ="border">
                 <h1 class="invitation_title">INVITATION</h1>
-                <span class="hangul" style="color:black;">To. <%= @feed.to%></span>
+                <span style="color:black;">To. <span class="hangul"><%= @feed.to%></span></span>
                 <br>
                 <div class="hangul" style='margin-top: 20px;'>
                     <span style="color:black;">너에게</span>
@@ -35,8 +35,8 @@
                    <span style="color:black;"> 게임대결을 신청한다.<br><br>
                     승리조건은 다음과 같다.</span>
                 </div>
-                <div class="hangul" style="margin-bottom: 10px; margin-top: 10px; color:black; border: 1px black solid; width: 300px; height: 100px; margin-left:25%; margin-right: 25%;"> <%=@feed.content%></div> <br>
-               <span class="hangul" style="color:black;"> From. <%=@feed.from%> </span>
+                <div class="hangul" style="margin-bottom: 10px; padding: 6px; margin-top: 10px; color:black; border: 1px black solid; width: 286px; height: 86px; margin-left:25%; margin-right: 25%;"> <%=@feed.content%></div> <br>
+               <span style="color:black;"> From. <span class="hangul"><%=@feed.from%> </span></span>
                 <br>
                 <!-- Colored raised button --><br><br>
                 <a id="shareBtn" class="btn btn-success clearfix">Share</a>
