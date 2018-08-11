@@ -53,7 +53,7 @@
 
 <script>
 document.getElementById('shareBtn').onclick = function() {
-    
+    console.log(window.location.href)
     FB.ui({
         method: 'share_open_graph',
         action_type: 'og.shares',
@@ -61,9 +61,9 @@ document.getElementById('shareBtn').onclick = function() {
         action_properties: JSON.stringify({
             object: {
             
-            'og:url': 'https://161d737c.ngrok.io/stat_board',
-            'og:title': '제목내맘대루',
-            'og:description': '아싸된당',
+            'og:url': window.location.href,
+            'og:title': '결투장',
+            'og:description': '결투신청이 도착했습니다.',
             'og:image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTHhmFeKLIgFw_lM7z9DyE0lF3a1CD4C1B664iUDULINp94pGZsw'
             }
         })
