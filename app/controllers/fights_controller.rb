@@ -93,7 +93,7 @@ class FightsController < ApplicationController
         elsif type == 2
             redirect_to action: 'diet', id: fight.id
         elsif type == 3
-            redirect_to action: 'esports', id: fight.id
+            redirect_to action: 'game', id: fight.id
         elsif type == 4
             redirect_to action: 'sports', id: fight.id
         elsif type == 5
@@ -112,9 +112,9 @@ class FightsController < ApplicationController
         render 'diet'
     end
 
-    def esports
+    def game
         @feed = Feed.find(params[:id])
-        render 'esports'
+        render 'game'
     end
 
     def sports

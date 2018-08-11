@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   post '/start_fight', to: 'fights#start_fight'
   get '/hakjum/:id', to: 'fights#hakjum'
   get '/diet/:id', to: 'fights#diet'
-  get '/esports/:id', to: 'fights#esports'
+  get '/game/:id', to: 'fights#game'
   get '/sports/:id', to: 'fights#sports'
   get '/free/:id', to: 'fights#free'
   get '/css_test', to: 'fights#css_test'
