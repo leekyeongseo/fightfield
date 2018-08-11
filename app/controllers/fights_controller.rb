@@ -79,7 +79,12 @@ class FightsController < ApplicationController
         redirect_to action: 'main'
         
     end
-    def hakjum
+    def start_fight
+        fight = Feed.new
+        fight.to = params[:to]
+        fight.content = params[:context]
+        fight.from = params[:from]
+        fight.save
         type = params[:city_id].to_i
         if type == 1
             render 'hakjum'
@@ -92,6 +97,8 @@ class FightsController < ApplicationController
         elsif type == 5
             render 'free'
         end
+        
+        
     end
     
 end

@@ -3,9 +3,9 @@
 <h1> 결투장 </h1>
 
 <div>
-    <form action='/hakjum' method='POST' style='border: 1px solid black;'>
+    <form action='/start_fight' method='POST' style='border: 1px solid black;'>
         <h1>결투장</h1>
-        To. <input type="text" name="To">
+        To. <input type="text" name="to">
         <br><br>
         너에게
         <select name="city_id" id="city_id">
@@ -17,8 +17,8 @@
         </select>
         를 신청한다.
         승리조건은 다음과 같다. <br>
-        <textarea type="text" name="Context"> </textarea> <br>
-        From. <input type="text" name="From">
+        <textarea type="text" name="context"> </textarea> <br>
+        From. <input type="text" name="from">
         <input type='submit'>
     </form>
 </div>
