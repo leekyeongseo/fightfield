@@ -126,6 +126,9 @@ class FightsController < ApplicationController
         @feed = Feed.find(params[:id])
         render 'free'
     end
+    def css_test
+        render 'css_test'
+    end
 
    
 

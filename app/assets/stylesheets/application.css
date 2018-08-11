@@ -13,3 +13,46 @@
  *= require_tree .
  *= require_self
  */
+ /* { font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif'; }
+ /*.demo-layout-transparent {
+    background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc3ziefjkiulek5bnfnco6pCkIfjqKJGsXoPzBPB8o1sexIfUr2w') center / cover;
+ }
+ */
+ html{
+     margin: 0px;
+ }
+ .mdl-layout-title{
+     text-align: center;
+ }
+ .text{
+    text-align: center;
+    color: white;
+ }
+ main{
+     align-self: center;
+ }
+ #textarea{
+     width: 300px;
+     height: 100px;
+ }
+ body {
+    overflow-y: hidden ! important;
+    overflow-x: hidden ! important;
+    background-color: rgb(255, 41, 41);
+    background-image: url('http://www.therookies.co/wp-content/uploads/2018/05/franois-dry-arcade-machine-asset-70-1527742576.jpg');
+    /*background-size: cover;*/
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0px;
+    }
+ .mdl-card__supporting-text{
+     margin: 0px;
+     align-self: center;
+ }
+ .invitation_title{
+     margin: 12px;
+ }
+.button_blue{
+    opacity: none !important;
+}

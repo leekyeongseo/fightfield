@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get '/esports/:id', to: 'fights#esports'
   get '/sports/:id', to: 'fights#sports'
   get '/free/:id', to: 'fights#free'
+  get '/css_test', to: 'fights#css_test'
   
   
 
