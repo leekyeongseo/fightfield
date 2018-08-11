@@ -36,10 +36,10 @@
         <div class="mdl-card__supporting-text">
             <form action='/start_fight' method='POST' class ="border">
                 <h1 class="invitation_title">INVITATION</h1>
-                To. <input type="text" name="to">
+                <span style="color:black;">To. </span><input type="text" name="to">
                 <br>
                 <div class="hangul" style='margin-top: 20px;'>
-                    너에게
+                    <span style="color:black;">너에게</span>
                     <select name="city_id" id="city_id">
                         <option value="1">학점대결</option>
                         <option value="2">다이어트대결</option>
@@ -47,11 +47,11 @@
                         <option value="4">스포츠대결</option>
                         <option value="5">자유대결</option>
                     </select>
-                    를 신청한다.<br><br>
-                    승리조건은 다음과 같다.
+                   <span style="color:black;"> 를 신청한다.<br><br>
+                    승리조건은 다음과 같다.</span>
                 </div>
                 <textarea type="text" name="context" id="textarea" style="margin-bottom: 10px; margin-top: 10px;"> </textarea> <br>
-                From. <input type="text" name="from">
+               <span style="color:black;"> From. </span><input type="text" name="from">
                 <br>
                 <!-- Colored raised button -->
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored button_blue" style= 'margin-top: 15px;'>
