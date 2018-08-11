@@ -1,3 +1,17 @@
 // Place all the styles related to the fights controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//Uses a transparent header that draws on top of the layout's background
+.demo-layout-transparent {
+  background: url('https://m.media-amazon.com/images/M/MV5BNTc2NTYyNTYwN15BMl5BanBnXkFtZTcwNTg0NjcxNA@@._V1_SY1000_CR0,0,1519,1000_AL_.jpg') center / cover;
+}
+.demo-layout-transparent .mdl-layout__header,
+.demo-layout-transparent .mdl-layout__drawer-button {
+  /* This background is dark, so we set text to white. Use 87% black instead if
+     your background is light. */
+  color: white;
+}
+.color-white {
+    color: white;
+}

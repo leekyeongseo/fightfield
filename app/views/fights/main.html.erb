@@ -1,126 +1,146 @@
+<div class="demo-layout-transparent mdl-layout mdl-js-layout">
+  <header class="mdl-layout__header mdl-layout__header--transparent">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title"></span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation -->
+      <a href="/stat_board", method='GET'>
+        <label class="mdl-button mdl-js-button mdl-button--icon">
+          <i class="material-icons mdl-color-text--white">notifications</i>
+        </label>
+      </a>
+      <!--
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="/stat_board", method='GET'>stat_board</a>
+        <a class="mdl-navigation__link" href="/ongoing", method='GET'>ongoing</a>
+        <a class="mdl-navigation__link" href="/leader_board", method='GET'>leader_board</a>
+        <a class="mdl-navigation__link" href="/setting", method='GET'>setting</a>
+      </nav>
+      -->
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">싸우자</span>
+    <nav class="mdl-navigation">
+      <% unless current_user %>
+        <a class="mdl-navigation__link" href = "/users/sign_in"> 로그인 </a>
+        <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
+      <% else %>
+        <% if current_user.image?%>
+          <img src=<%=current_user.image%>> <%= current_user[:email] %>
+        <%end%>
+        
+        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+      <% end %>
+      <a class="mdl-navigation__link" href="/stat_board", method='GET'>stat_board</a>
+      <a class="mdl-navigation__link" href="/ongoing", method='GET'>ongoing</a>
+      <a class="mdl-navigation__link" href="/leader_board", method='GET'>leader_board</a>
+      <a class="mdl-navigation__link" href="/setting", method='GET'>setting</a>
+    </nav>
+  </div>
+  <main class="mdl-layout__content color-white">
+    <h3 style="text-align: center;">
+        결투장
+    </h3>
+    <div style="margin: 40px;">
+    To. 홍길동<br>
+    나는 ㅡㅡㅡ에게 ㅡㅡㅡ결투를 신청한다. 이를 받아들일 시 패자는 ㅡㅡㅡ를 할 것을 제안한다.<br>
+    거절하는 이는 쫄보이다. <br>
+    승리조건             (공개/비공개)<br>
+                            ㄱ<br>
+    ㄴ<br>
+    From. ㅡㅡㅡ(Ex)너의 천적)<br>
+    공유하기
+    <br><br>
 
+    <form action='/applying_action' method='POST'>
+        <input type="text" name="email">  에게 <button>결투신청</button>
+        <br>결투내용 : <input type="text" name="content">
+    </form>
 
-<h1> 결투장 </h1>
+    <br>
 
-
-To. ㅡㅡㅡ(Ex)ㅈ밥)
-초대장
-나는 ㅡㅡㅡ에게 ㅡㅡㅡ결투를 신청한다. 이를 받아들일 시 패자는 ㅡㅡㅡ를 할 것을 제안한다.
-거절하는 이는 쫄보이다. 
-승리조건             (공개/비공개)
-                          ㄱ
-ㄴ
-From. ㅡㅡㅡ(Ex)너의 천적)
-공유하기
-<br><br>
-
- <form action='/applying_action' method='POST'>
-    <input type="text" name="email">  에게 <button>결투신청</button>
-    <br>결투내용 : <input type="text" name="content">
-</form>
-
-<br>
-
-<% if user_signed_in? %>
-   
-    <h3>내가 한 결투 신청</h3>
-    <% @fight.each do |f|%>
-       
-        <%if f.applicant == current_user%>
-            
-            <%if f.respondent_exist%>    
-                [<%= f.respondent.email %>] 님에게 결투를 신청하셨습니다.
-            <%else%>
-                (아직등록안됨)[<%= f.temp_user %>] 님에게 결투를 신청하셨습니다.
-            <%end %>
-                결투내용 : <%=f.content%>
-                
-
-                
-            <%if f.standard == 0 %>
-                [수락대기중]<br>
-            <%elsif f.standard ==2 %>
-                [거절됨]<br>
-            <%else%>
-                [수락 완료]<br>
-            <%end%>
-            
+    <% if user_signed_in? %>
     
-   
+        <h3>내가 한 결투 신청</h3>
+        <% @fight.each do |f|%>
         
+            <%if f.applicant == current_user%>
+                
+                <%if f.respondent_exist%>    
+                    [<%= f.respondent.email %>] 님에게 결투를 신청하셨습니다.
+                <%else%>
+                    (아직등록안됨)[<%= f.temp_user %>] 님에게 결투를 신청하셨습니다.
+                <%end %>
+                    결투내용 : <%=f.content%>
+                    
 
-             
-        <%end%>
-        
-    <%end%>
-
-    <h3>나에게 온 결투 신청</h3>
-    <% @fight.each do |f|%>
-      
-        <%if f.respondent == current_user && f.respondent_exist %>
-            [<%= f.applicant.email%>] 님께서 
-
-            <%if f.standard == 1 %>
-               신청하신 결투를 수락하셨습니다.
-                결투내용 : <%=f.content%>
-
-            <%elsif f.standard ==2 %>
-                신청하신 결투를 거절하였습니다.
-                결투내용 : <%=f.content%>
-
-            <%else%>
-                결투를 신청하셨습니다.
-                결투내용 : <%=f.content%>
-                <a href='/accept_fight/<%=f.id%>'>결투수락</a>
-                <a href='/reject_fight/<%=f.id%>'>결투거절</a>
+                    
+                <%if f.standard == 0 %>
+                    [수락대기중]<br>
+                <%elsif f.standard ==2 %>
+                    [거절됨]<br>
+                <%else%>
+                    [수락 완료]<br>
+                <%end%>
+                
                 
             <%end%>
-            <br>
-
-        <%elsif f.respondent_exist == false && f.temp_user == current_user.email %>
-            [<%= f.applicant.email%>] 님께서 
             
-           (아직 등록이안됨)
-            <%if f.standard == 1 %>
-               신청하신 결투를 수락하셨습니다.
-                결투내용 : <%=f.content%>
+        <%end%>
 
-            <%elsif f.standard ==2 %>
-                신청하신 결투를 거절하였습니다.
-                결투내용 : <%=f.content%>
+        <h3>나에게 온 결투 신청</h3>
+        <% @fight.each do |f|%>
+        
+            <%if f.respondent == current_user && f.respondent_exist %>
+                [<%= f.applicant.email%>] 님께서 
 
+                <%if f.standard == 1 %>
+                신청하신 결투를 수락하셨습니다.
+                    결투내용 : <%=f.content%>
+
+                <%elsif f.standard ==2 %>
+                    신청하신 결투를 거절하였습니다.
+                    결투내용 : <%=f.content%>
+
+                <%else%>
+                    결투를 신청하셨습니다.
+                    결투내용 : <%=f.content%>
+                    <a href='/accept_fight/<%=f.id%>'>결투수락</a>
+                    <a href='/reject_fight/<%=f.id%>'>결투거절</a>
+                    
+                <%end%>
+                <br>
+
+            <%elsif f.respondent_exist == false && f.temp_user == current_user.email %>
+                [<%= f.applicant.email%>] 님께서 
+                
+            (아직 등록이안됨)
+                <%if f.standard == 1 %>
+                신청하신 결투를 수락하셨습니다.
+                    결투내용 : <%=f.content%>
+
+                <%elsif f.standard ==2 %>
+                    신청하신 결투를 거절하였습니다.
+                    결투내용 : <%=f.content%>
+
+                <%else%>
+                    결투를 신청하셨습니다.
+                    결투내용 : <%=f.content%>
+                    <a href='/accept_fight/<%=f.id%>'>결투수락</a>
+                    <a href='/reject_fight/<%=f.id%>'>결투거절</a>
+                <%end%>
+        
+            <br>
             <%else%>
-                결투를 신청하셨습니다.
-                결투내용 : <%=f.content%>
-                <a href='/accept_fight/<%=f.id%>'>결투수락</a>
-                <a href='/reject_fight/<%=f.id%>'>결투거절</a>
+            
             <%end%>
-       
-        <br>
-        <%else%>
         
         <%end%>
-       
+
     <%end%>
-
-
-
-<%end%>
-
-<br>
-<div>
-    <a href="/stat_board", method='GET'> stat_board </a>
+    </div>
+  </main>
 </div>
-<div>
-    <a href="/ongoing", method='GET'> ongoing </a>
-</div>
-<div>
-    <a href="/setting", method='GET'> setting </a>
-</div>
-<div>
-    <a href="/leader_board", method='GET'> leader_board </a>
-</div>
-
-
-
-
