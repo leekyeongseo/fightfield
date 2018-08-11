@@ -86,11 +86,6 @@ class FightsController < ApplicationController
         fight.from = params[:from]
         fight.fight_type = params[:city_id].to_i
         fight.save
-        @id =fight.id
-        @to = fight.to
-        @from = fight.from
-        @content = fight.content
-        @type = fight.fight_type
         
         type = params[:city_id].to_i
         if type == 1    
