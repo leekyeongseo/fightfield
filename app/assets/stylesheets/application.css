@@ -52,7 +52,14 @@
  }
  .invitation_title{
      margin: 12px;
+     font-family: 'Press Start 2P', cursive;
+     color: blue;
  }
 .button_blue{
     opacity: none !important;
+}
+.hangul{
+    font-family: 'Black Han Sans', sans-serif;
+    font-weight: normal;
+    font-size: 17px;
 }
