@@ -79,5 +79,19 @@ class FightsController < ApplicationController
         redirect_to action: 'main'
         
     end
+    def hakjum
+        type = params[:city_id].to_i
+        if type == 1
+            render 'hakjum'
+        elsif type == 2
+            render 'diet'
+        elsif type == 3
+            render 'esports'
+        elsif type == 4
+            render 'sports'
+        elsif type == 5
+            render 'free'
+        end
+    end
     
 end

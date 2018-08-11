@@ -2,26 +2,30 @@
 
 <h1> 결투장 </h1>
 
+<div>
+    <form action='/hakjum' method='POST' style='border: 1px solid black;'>
+        <h1>결투장</h1>
+        To. <input type="text" name="To">
+        <br><br>
+        너에게
+        <select name="city_id" id="city_id">
+            <option value="1">학점대결</option>
+            <option value="2">다이어트대결</option>
+            <option value="3">e-sports대결</option>
+            <option value="4">스포츠대결</option>
+            <option value="5">자유대결</option>
+        </select>
+        를 신청한다.
+        승리조건은 다음과 같다. <br>
+        <textarea type="text" name="Context"> </textarea> <br>
+        From. <input type="text" name="From">
+        <input type='submit'>
+    </form>
+</div>
 
-
-To. ㅡㅡㅡ(Ex)ㅈ밥)
-초대장
-나는 ㅡㅡㅡ에게 ㅡㅡㅡ결투를 신청한다. 이를 받아들일 시 패자는 ㅡㅡㅡ를 할 것을 제안한다.
-거절하는 이는 쫄보이다. 
-승리조건             (공개/비공개)
-                          ㄱ
-ㄴ
-From. ㅡㅡㅡ(Ex)너의 천적)
-공유하기
-<br><br>
-
- <form action='/applying_action' method='POST'>
-    <input type="text" name="email">  에게 <button>결투신청</button>
-    <br>결투내용 : <input type="text" name="content">
-</form>
 
 <br>
-
+<!--
 <% if user_signed_in? %>
    
     <h3>내가 한 결투 신청</h3>
@@ -107,7 +111,7 @@ From. ㅡㅡㅡ(Ex)너의 천적)
 
 
 <%end%>
-
+-->
 <br>
 <div>
     <a href="/stat_board", method='GET'> stat_board </a>
@@ -124,50 +128,3 @@ From. ㅡㅡㅡ(Ex)너의 천적)
 
 
 
-<div class="page-header">
-  <h1>Share Dialog</h1>
-</div>
-
-<p>Click the button below to trigger a Share Dialog</p>
-
-<a id="shareBtn" class="btn btn-success clearfix">Share</a>
-
-<p style="margin-top: 50px">
-  <hr />
-  <div class="btn btn-small"  href="https://developers.facebook.com/docs/sharing/reference/share-dialog">Share Dialog Documentation</div>
-</p>
-
-<script>
-document.getElementById('shareBtn').onclick = function() {
-    
-    FB.ui({
-        method: 'share_open_graph',
-        action_type: 'og.shares',
-        display: 'popup',
-        action_properties: JSON.stringify({
-            object: {
-            
-            'og:url': 'https://161d737c.ngrok.io/stat_board',
-            'og:title': '제목내맘대루',
-            'og:description': '아싸된당',
-            'og:image': 'https://s-i.huffpost.com/gen/5024106/thumbs/o-PUPPIES-570.jpg?1'
-            }
-        })
-        }, function(response) {
-        // Action after response
-        });
-
-  //FB.ui({
-    //method: 'share',
-    //display: 'popup',
-    //hashtag:'#결투장',
-    //quote:"s히히",
-    //href: 'https://161d737c.ngrok.io',
-    //description: "메롱",
-   
-    
-  //}, function(response){
-      
-  //});
-}
-</script>
