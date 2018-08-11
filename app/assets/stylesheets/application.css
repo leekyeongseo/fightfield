@@ -29,6 +29,7 @@
     color: white;
  }
  main{
+     margin-top: 64px;
      align-self: center;
  }
  #textarea{
