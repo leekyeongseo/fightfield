@@ -96,18 +96,40 @@ class FightsController < ApplicationController
         if type == 1    
             redirect_to action: 'hakjum', id: fight.id
         elsif type == 2
-            render 'diet'
+            redirect_to action: 'diet', id: fight.id
         elsif type == 3
-            render 'esports'
+            redirect_to action: 'esports', id: fight.id
         elsif type == 4
-            render 'sports'
+            redirect_to action: 'sports', id: fight.id
         elsif type == 5
-            render 'free'
+            redirect_to action: 'free',id: fight.id
         end        
     end
+
+
     def hakjum
         @feed = Feed.find(params[:id])
         render 'hakjum'
+    end
+
+    def diet
+        @feed = Feed.find(params[:id])
+        render 'diet'
+    end
+
+    def esports
+        @feed = Feed.find(params[:id])
+        render 'esports'
+    end
+
+    def sports
+        @feed = Feed.find(params[:id])
+        render 'sports'
+    end
+
+    def free
+        @feed = Feed.find(params[:id])
+        render 'free'
     end
 
    
