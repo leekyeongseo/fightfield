@@ -84,17 +84,17 @@ class FightsController < ApplicationController
         fight.to = params[:to]
         fight.content = params[:context]
         fight.from = params[:from]
-        fight.type = params[:city_id].to_i
+        fight.fight_type = params[:city_id].to_i
         fight.save
         @id =fight.id
         @to = fight.to
         @from = fight.from
         @content = fight.content
-        @type = fight.type
+        @type = fight.fight_type
         
         type = params[:city_id].to_i
         if type == 1    
-            render 'hakjum'
+            redirect_to action: 'hakjum', id: fight.id
         elsif type == 2
             render 'diet'
         elsif type == 3
@@ -103,10 +103,11 @@ class FightsController < ApplicationController
             render 'sports'
         elsif type == 5
             render 'free'
-        end
-
-        
-        
+        end        
+    end
+    def hakjum
+        @feed = Feed.find(params[:id])
+        render 'hakjum'
     end
 
    

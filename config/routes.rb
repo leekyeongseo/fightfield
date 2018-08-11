@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get '/accept_fight/:id', to: 'fights#accept_fight'
   get '/reject_fight/:id', to: 'fights#reject_fight'
   post '/start_fight', to: 'fights#start_fight'
+  get '/hakjum/:id', to: 'fights#hakjum'
   
   
 
